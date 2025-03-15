@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Carrera - Telemática</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ffffff;
+            padding: 10px;
+            text-align: left;
+        }
+        select, input {
+            width: 100%;
+            padding: 5px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        button {
+            background-color: #6200ea;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #3700b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gestión de Carrera - Telemática</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Materia</th>
+                    <th>Estado</th>
+                    <th>Notas</th>
+                </tr>
+            </thead>
+            <tbody id="tablaMaterias"></tbody>
+        </table>
+        <button onclick="guardarDatos()">Guardar Datos</button>
+    </div>
+
+    <script>
+        const materias = [
+            { codigo: "MATG1045", nombre: "Cálculo de una Variable" },
+            { codigo: "FISG1005", nombre: "Física: Mecánica" },
+            { codigo: "MATG1046", nombre: "Cálculo Vectorial" },
+            { codigo: "FISG1006", nombre: "Física: Electricidad y Magnetismo" },
+            { codigo: "MATG1049", nombre: "Álgebra Lineal" },
+            { codigo: "MATG1051", nombre: "Matemáticas Discretas" },
+            { codigo: "MATG1050", nombre: "Ecuaciones Diferenciales" },
+            { codigo: "ESTG1034", nombre: "Estadística" },
+            { codigo: "CPG1043", nombre: "Fundamentos de Programación" },
+            { codigo: "CPG1052", nombre: "Programación Orientada a Objetos" },
+            { codigo: "TICG1018", nombre: "Sistema de Bases de Datos" },
+            { codigo: "TLMG1032", nombre: "Redes de Datos" },
+            { codigo: "TLMG1030", nombre: "Internetworking" },
+            { codigo: "TLMG1022", nombre: "Administración de Sistemas y Servicios en Red" },
+            { codigo: "TLMG1025", nombre: "Ciberseguridad y Gestión de Redes" },
+            { codigo: "TLMG1034", nombre: "Sistemas en la Nube" },
+            { codigo: "TLMG1028", nombre: "Evaluación y Simulación de Redes" },
+            { codigo: "TLMG1027", nombre: "Comunicación Digital de Datos" },
+            { codigo: "CPG1015", nombre: "Sistemas Distribuidos y Computación en la Nube" },
+            { codigo: "TLMG1035", nombre: "Telemetría y Sistemas Ciberfísicos" },
+            { codigo: "TLMG1036", nombre: "Telemática y Transformación Digital" },
+            { codigo: "TLMG1031", nombre: "Materia Integradora de Telemática" },
+            { codigo: "ELEG1034", nombre: "Electricidad Básica" },
+            { codigo: "EYA1046", nombre: "Sistemas Embebidos" },
+            { codigo: "EYA1034", nombre: "Electrónica" },
+            { codigo: "EYA1044", nombre: "Sistemas Digitales" },
+            { codigo: "INDG1033", nombre: "Análisis y Resolución de Problemas" },
+            { codigo: "IDIG1006", nombre: "Inglés I" },
+            { codigo: "IDIG1007", nombre: "Inglés II" },
+            { codigo: "IDIG1008", nombre: "Inglés III" },
+            { codigo: "IDIG1009", nombre: "Inglés IV" },
+            { codigo: "IDIG1010", nombre: "Inglés V" },
+            { codigo: "ADMG1005", nombre: "Emprendimiento e Innovación" },
+            { codigo: "ADSG1025", nombre: "Ciencias de la Sostenibilidad" },
+            { codigo: "IDIG2012", nombre: "Comunicación" }
+        ];
+
+        const estados = ["Pendiente", "Cursando", "Aprobada", "Reprobada"];
+
+        function cargarMaterias() {
+            const tabla = document.getElementById("tablaMaterias");
+            materias.forEach(materia => {
+                const fila = document.createElement("tr");
+                fila.innerHTML = `
+                    <td>${materia.codigo}</td>
+                    <td>${materia.nombre}</td>
+                    <td>
+                        <select>
+                            ${estados.map(estado => `<option value="${estado}">${estado}</option>`).join('')}
+                        </select>
+                    </td>
+                    <td><input type="text" placeholder="Añadir nota"></td>
+                `;
+                tabla.appendChild(fila);
+            });
+        }
+
+        function guardarDatos() {
+            alert("Datos guardados correctamente (simulado)");
+        }
+
+        document.addEventListener("DOMContentLoaded", cargarMaterias);
+    </script>
+</body>
+</html>
